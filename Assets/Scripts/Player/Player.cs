@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     public Life life { get => _life; private set => _life = value; }
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         skills = GetComponents<Skill>();
 

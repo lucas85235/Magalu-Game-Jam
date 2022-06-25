@@ -7,11 +7,12 @@ public class Enemy : MonoBehaviour
 {
     protected Life _life;
     protected NavMeshAgent _nav;
-    protected Animator _animator;
+    protected ZombieAnimations _animations;
     protected bool canAttack = true;
 
     [Header("Enemy")]
     public Transform model;
+    public float destroyTime = 2f;
 
     [Header("Target Setup")]
     public Transform target;
@@ -33,11 +34,11 @@ public class Enemy : MonoBehaviour
         }
 
         _life = GetComponent<Life>();
-        _animator = model.GetComponent<Animator>();
+        _animations = model.GetComponent<ZombieAnimations>();
         _nav = GetComponent<NavMeshAgent>();
 
         _nav.stoppingDistance = distanceToAttack;
-        _animator.SetFloat("Speed", 1f);
+        _animations.Walk(1f);
 
         _life.OnDie.AddListener(DeathFeedback);
 
@@ -48,22 +49,22 @@ public class Enemy : MonoBehaviour
     {
         while (!_life.isDead)
         {
-            if (TargetDistance > distanceToAttack && TargetDistance < detectDistance)
+            if (TargetDistance > distanceToAttack && TargetDistance < detectDistance && canAttack)
             {
                 _nav.SetDestination(target.position);
-                _animator.SetBool("Move", true);
+                _animations.Walk(1f);
             }
 
             else if (TargetDistance <= distanceToAttack && canAttack)
             {
                 canAttack = false;
-                _animator.SetBool("Move", false);
+                _animations.Attack();
                 StartCoroutine(Attack());
             }
 
             else if (TargetDistance >= detectDistance)
             {
-                _animator.SetBool("Move", false);
+                _animations.Idle();
                 _nav.SetDestination(transform.position);
             }
 
@@ -96,8 +97,8 @@ public class Enemy : MonoBehaviour
     protected virtual void DeathFeedback()
     {
         _nav.isStopped = true;
-        _animator.SetBool("Move", false);
-        Destroy(this.gameObject);
+        _animations.Death();
+        Destroy(this.gameObject, destroyTime);
     }
 
     protected virtual void OnDrawGizmosSelected()
