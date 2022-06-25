@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5983161730843989003}
   - component: {fileID: 5983161730843989000}
   m_Layer: 0
-  m_Name: ItemPick
+  m_Name: ItemPickWood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b05aef9a0fdde74585c1b60aecceb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPick: {fileID: 0}
+  itemPick: {fileID: 11400000, guid: 97cfa35bc2cfddd48bb511a6da0aaccc, type: 2}
 --- !u!114 &5983161730843989000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,9 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Item
-  m_Shader: {fileID: -6465566751694194690, guid: 5070aa8c79aa66743acc6d5617c65785,
-    type: 3}
+  m_Name: ItemMetal
+  m_Shader: {fileID: -6465566751694194690, guid: 5070aa8c79aa66743acc6d5617c65785, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -113,7 +112,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_2B7AC181: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 0}
-    - Color_391d2f713d484b59a41d63baeb40dca6: {r: 1, g: 1, b: 1, a: 0}
+    - Color_391d2f713d484b59a41d63baeb40dca6: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0}
     - Color_4E3FBE63: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

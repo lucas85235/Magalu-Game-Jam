@@ -17,13 +17,7 @@ public class ItemPick : MonoBehaviour
 
     protected void OnPick()
     {
-        Inventory.Instance.AddItem(itemPick);
-
-        if (itemPick.type == Item.ItemType.Weapon)
-        {
-            itemPick.IncrementAction();
-        }
-        
+        itemPick.IncrementAction();
         Destroy(gameObject);
     }
 }
