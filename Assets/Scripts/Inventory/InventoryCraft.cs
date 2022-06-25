@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryCraft : MonoBehaviour
 {
@@ -13,8 +14,30 @@ public class InventoryCraft : MonoBehaviour
     public Dictionary<ItemType, int> Inventory
     {
         get => items;
-        set => items = value;
+        private set => items = value;
     }
+
+    public int Wood
+    {
+        get => Inventory[ItemType.Wood];
+        set 
+        {
+            Inventory[ItemType.Wood] = value;
+            OnUpdateItems?.Invoke();
+        }
+    }
+
+    public int Metal
+    {
+        get => Inventory[ItemType.Metal];
+        set 
+        {
+            Inventory[ItemType.Metal] = value;
+            OnUpdateItems?.Invoke();
+        }
+    }
+
+    public UnityEvent OnUpdateItems;
 
     public static InventoryCraft Instance;
 
