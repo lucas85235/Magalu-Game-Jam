@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractButton : MonoBehaviour
 {
-    public Action OnInteract;
-    public bool canInteract { get => interactOption.activeSelf; }
+    [Space]
+    public UnityEvent OnInteract;
+
+    [HideInInspector]
+    public bool canInteract = true;
 
     [Header("Interact Button")]
     public GameObject interactOption;
     public Vector3 adjustLocalPosition = Vector3.zero;
 
-    void Start()
+    protected void Start()
     {
         interactOption = Instantiate(interactOption);
         interactOption.transform.SetParent(transform);
@@ -20,18 +24,18 @@ public class InteractButton : MonoBehaviour
         interactOption.SetActive(false);
     }
 
-    void Update()
+    protected void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canInteract)
+        if (Input.GetKeyDown(KeyCode.E) && interactOption.activeSelf && canInteract)
         {
             interactOption.SetActive(false);
-            if (OnInteract != null) OnInteract();
+            OnInteract?.Invoke();
         }
     }
 
     protected virtual void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Player" && !canInteract)
+        if (other.tag == "Player" && !interactOption.activeSelf && canInteract)
         {
             interactOption.SetActive(true);
         }   
