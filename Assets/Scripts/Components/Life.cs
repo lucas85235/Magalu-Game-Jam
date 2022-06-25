@@ -43,7 +43,6 @@ public class Life : MonoBehaviour
         UpdateHud();
     }
 
-
     public virtual void Revive()
     {
         currentLife = maxLife;

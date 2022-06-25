@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e45165dd3ce0d9438c7500c6e667524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  runSpeed: 3.5
+  speed: 4
+  runSpeed: 4
 --- !u!114 &2031041200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fa81f3497b1ca488de77181d4bfb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializeItems: []
 --- !u!1 &8340546758839384171
 GameObject:
   m_ObjectHideFlags: 0
