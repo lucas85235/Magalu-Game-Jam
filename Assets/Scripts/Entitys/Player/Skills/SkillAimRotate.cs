@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SkillAimRotate : Skill
 {
@@ -12,7 +13,7 @@ public class SkillAimRotate : Skill
     {
         if (PauseMenu.Instance.IsPaused) return;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out _hitInfo, 100, inputLayer))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out _hitInfo, 100, inputLayer))
         {
             Vector3 playerToMouse = _hitInfo.point - model.position;
             playerToMouse.y = 0;
