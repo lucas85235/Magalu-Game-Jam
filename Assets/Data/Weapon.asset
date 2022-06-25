@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184cb89485f882443b2253715011225b, type: 3}
+  m_Name: Weapon
+  m_EditorClassIdentifier: 
+  itemName: AK
+  itemDescription: Best Weapon
+  itemSprite: {fileID: 21300000, guid: 20dba58da18c25e428c600e0fba190f0, type: 3}
+  type: 1
+  OnUserItem:
+    m_PersistentCalls:
+      m_Calls: []
+  weapon: {fileID: 9215942354844371391, guid: 633530c61a56140489de0b63bd3fb461, type: 3}
