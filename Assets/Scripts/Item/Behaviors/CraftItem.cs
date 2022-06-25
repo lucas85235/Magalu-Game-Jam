@@ -12,6 +12,11 @@ public class CraftItem : Item
     public override void IncrementAction()
     {
         OnUserItem?.Invoke();
-        InventoryCraft.Instance.Inventory[itemType] += incrementAmount;
+
+        if (itemType == InventoryCraft.ItemType.Wood)
+            InventoryCraft.Instance.Wood += incrementAmount;
+
+        if (itemType == InventoryCraft.ItemType.Metal)
+            InventoryCraft.Instance.Metal += incrementAmount;
     }
 }
