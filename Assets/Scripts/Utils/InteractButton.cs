@@ -16,6 +16,25 @@ public class InteractButton : MonoBehaviour
     public GameObject interactOption;
     public Vector3 adjustLocalPosition = Vector3.zero;
 
+    private PlayerCharControls inputActions;
+
+    private void Awake()
+    {
+        inputActions = new PlayerCharControls();
+
+        inputActions.Character.Interact.performed += _ => InterpretInteractButton();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
     protected void Start()
     {
         interactOption = Instantiate(interactOption);
@@ -24,9 +43,9 @@ public class InteractButton : MonoBehaviour
         interactOption.SetActive(false);
     }
 
-    protected void Update()
+    protected void InterpretInteractButton()
     {
-        if (Input.GetKeyDown(KeyCode.E) && interactOption.activeSelf && canInteract)
+        if (interactOption.activeSelf && canInteract)
         {
             interactOption.SetActive(false);
             OnInteract?.Invoke();

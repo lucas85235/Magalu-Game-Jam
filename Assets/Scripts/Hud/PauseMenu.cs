@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public bool IsPaused;
 
     public static PauseMenu Instance;
+    private PlayerCharControls inputActions;
 
     private void Awake() 
     {
@@ -16,23 +17,27 @@ public class PauseMenu : MonoBehaviour
         {
             Instance = this;
         }
+
+        inputActions = new PlayerCharControls();
+
+        inputActions.Interface.Pause.performed += _ => PauseUnpause();
     }
 
-    private void Update() 
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-            IsPaused = true;
-            mainManu.SetActive(true);
-        }
+        inputActions.Enable();   
     }
 
-    public void GameReturn()
+    private void OnDisable()
     {
-        mainManu.SetActive(false);
-        IsPaused = false;
-        Time.timeScale = 1;
+        inputActions.Disable();
+    }
+
+    private void PauseUnpause()
+    {
+        IsPaused = !IsPaused;
+        Time.timeScale = IsPaused ? 0 : 1;
+        mainManu.SetActive(IsPaused);
     }
 
     public void LoadLevel(string level)

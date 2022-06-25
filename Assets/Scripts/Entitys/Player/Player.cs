@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     public Life life { get => _life; private set => _life = value; }
 
+    protected PlayerCharControls inputActions;
+
     protected virtual void Awake()
     {
         skills = GetComponents<Skill>();
@@ -28,6 +30,27 @@ public class Player : MonoBehaviour
         _life.OnDie.AddListener(CharacterDead);
 
         inventory.SetActive(false);
+
+        inputActions = new PlayerCharControls();
+
+        inputActions.Interface.Inventory.performed += _ =>
+        {
+            if (!_life.isDead)
+            {
+                PauseMenu.Instance.SetPause(!inventory.activeSelf);
+                inventory.SetActive(!inventory.activeSelf);
+            }
+        };
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
     }
 
     protected virtual void Update()
@@ -38,13 +61,6 @@ public class Player : MonoBehaviour
             foreach (var skill in skills)
             {
                 skill.UseSkill();
-            }
-
-            // Pause Menu
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                PauseMenu.Instance.SetPause(!inventory.activeSelf);
-                inventory.SetActive(!inventory.activeSelf);
             }
         }
     }
