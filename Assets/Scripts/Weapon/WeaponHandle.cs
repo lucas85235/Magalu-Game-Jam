@@ -21,8 +21,8 @@ public class WeaponHandle : MonoBehaviour
         var wObj = Instantiate(initialWeapon.weapon);
 
         wObj.transform.SetParent(rightHand);
-        wObj.transform.localPosition = initialWeapon.weapon.transform.position;
-        wObj.transform.localRotation = initialWeapon.weapon.transform.rotation;
+        wObj.transform.localPosition = initialWeapon.weapon.transform.position + initialWeapon.positionOffset;
+        wObj.transform.localRotation = Quaternion.Euler(transform.forward + initialWeapon.rotationOffset);
         wObj.name = initialWeapon.weapon.name;
     }
 }

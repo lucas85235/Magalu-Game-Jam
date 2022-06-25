@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 
             if (life != null)
             {
-                life.SetLife(-bulletDamage);
+                life.TakeDamage(bulletDamage);
             }
 
             Destroy(this.gameObject);

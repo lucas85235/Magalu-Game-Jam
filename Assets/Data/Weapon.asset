@@ -20,3 +20,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   weapon: {fileID: 9215942354844371391, guid: 633530c61a56140489de0b63bd3fb461, type: 3}
+  positionOffset: {x: 0.25, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 93, z: 0}

@@ -37,7 +37,7 @@ public class Life : MonoBehaviour
         if (isDead) return;
         
         // Set new life value
-        currentLife += damage;
+        currentLife -= damage;
         
         LifeRules();
         UpdateHud();

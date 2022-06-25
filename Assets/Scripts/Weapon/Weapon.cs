@@ -19,11 +19,11 @@ public class Weapon : MonoBehaviour
 
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(0) && canFire)
+        if (canFire)
         {
-            // if (PauseMenu.Instance.IsPaused) return;
+            if (PauseMenu.Instance.IsPaused) return;
 
             canFire = false;
             Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
