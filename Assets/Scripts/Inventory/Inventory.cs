@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour
 
             if (nextSlot > -1)
             {
-                Debug.Log(nextSlot + "");
+                // Debug.Log(nextSlot + "");
 
                 items.Add(item);
                 slots[nextSlot].sprite = item.itemSprite;
@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         {
             if (slots[i].sprite == null)
             {
-                Debug.Log("Find Empty Slot " + i);
+                // Debug.Log("Find Empty Slot " + i);
                 return i;
             }
         }

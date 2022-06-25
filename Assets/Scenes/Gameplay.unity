@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 428303221}
   - component: {fileID: 428303222}
   - component: {fileID: 428303224}
+  - component: {fileID: 428303225}
   m_Layer: 0
   m_Name: Turrent
   m_TagString: Untagged
@@ -431,6 +432,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notConstructedObject: {fileID: 2063925539}
   constructedObject: {fileID: 1614924141}
+--- !u!114 &428303225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428303220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4cf29a1bd42b94ba8c125e6443c7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipe: {fileID: 1869083536}
+  fireRate: 0.5
+  bullet: {fileID: 3366231753354790193, guid: 4c292c10260c8a642a57045e18c7ab38, type: 3}
+  bulletSpeed: 900
+  target: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  findDistance: 6
+  findRate: 0.1
+  aimPivot: {fileID: 814367641}
 --- !u!1 &454828657
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +611,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &814367641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4012465493108630, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
+  m_PrefabInstance: {fileID: 1614924140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922573686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1349561404913050, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4503877623601788, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
       propertyPath: m_RootOrder
@@ -1636,6 +1665,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Install
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 428303225}
+        m_TargetAssemblyTypeName: Turrent, Assembly-CSharp
+        m_MethodName: ActiveIn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   _onDisable:
@@ -1900,6 +1941,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1869083536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4237558936065136, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
+  m_PrefabInstance: {fileID: 1614924140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1889719551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2260,7 +2306,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1b86dd82077b829429e28c972d448e84, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95622721963955590, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ca104808603b88b448d7341e7b9e8a00, type: 3}
 --- !u!1 &2063925539 stripped
 GameObject:

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6770503154818191812}
   - component: {fileID: 4326374163762243356}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletTurrent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,4 +234,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 1.2
-  bulletDamage: 15
+  bulletDamage: 5
+  canDamagePlayer: 0

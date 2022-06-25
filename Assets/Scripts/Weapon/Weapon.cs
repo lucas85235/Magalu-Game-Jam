@@ -12,19 +12,19 @@ public class Weapon : MonoBehaviour
     public Rigidbody bullet;
     public float bulletSpeed = 900f;
 
-    protected bool canFire = true;
+    protected bool canFire;
 
-    private void Start() 
+    protected virtual void Start() 
     {
-
+        canFire = true;
     }
 
     protected virtual void FixedUpdate()
     {
+        if (PauseMenu.Instance.IsPaused) return;
+
         if (canFire)
         {
-            if (PauseMenu.Instance.IsPaused) return;
-
             canFire = false;
             Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
             spawBullet.AddForce(pipe.forward * bulletSpeed);

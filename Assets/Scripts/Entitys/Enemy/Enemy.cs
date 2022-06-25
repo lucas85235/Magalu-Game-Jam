@@ -45,6 +45,14 @@ public class Enemy : MonoBehaviour
         StartCoroutine(RoutineIA());
     }
 
+    private void LateUpdate()
+    {
+        if (!_life.isDead && !canAttack)
+        {
+            transform.LookAt(target.position);
+        }
+    }
+
     protected virtual IEnumerator RoutineIA()
     {
         while (!_life.isDead)
@@ -57,8 +65,10 @@ public class Enemy : MonoBehaviour
 
             else if (TargetDistance <= distanceToAttack && canAttack)
             {
+                _nav.enabled = false;
                 canAttack = false;
                 _animations.Attack();
+
                 StartCoroutine(Attack());
             }
 
@@ -82,6 +92,7 @@ public class Enemy : MonoBehaviour
             if (hitCollider.transform != transform)
             {
                 var life = hitCollider.gameObject.GetComponent<Life>();
+
                 if (life != null)
                 {
                     life.TakeDamage(damage);
@@ -92,6 +103,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(attackRate);
 
         canAttack = true;
+        _nav.enabled = true;
     }
 
     protected virtual void DeathFeedback()
