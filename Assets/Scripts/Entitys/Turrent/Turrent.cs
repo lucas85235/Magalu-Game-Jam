@@ -12,6 +12,7 @@ public class Turrent : Weapon
 
     [Header("Other Settings")]
     public Transform aimPivot;
+    public Animator animator;
 
     protected bool isActive = false;
     protected bool hasTarget = true;
@@ -23,28 +24,29 @@ public class Turrent : Weapon
 
     protected override void FixedUpdate()
     {
-        if (!canFire) return;
-        if (PauseMenu.Instance.IsPaused) return;
-
-        if (canFire && isActive && target != null && !target.isDead)
-        {
-            canFire = false;
-            Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
-            spawBullet.AddForce(pipe.forward * bulletSpeed);
-            Invoke("FireRate", fireRate);
-        }
-    }
-
-    protected void LateUpdate() 
-    {
         if (target != null && !target.isDead)
         {
             var targetPos = target.transform.position;
             aimPivot.LookAt(targetPos);
         }
+
+        if (!canFire) return;
+        if (PauseMenu.Instance.IsPaused) return;
+
+        FindTarget();
+
+        if (canFire && isActive && target != null && !target.isDead)
+        {
+            canFire = false;
+            animator.SetTrigger("Fire");
+            Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
+            spawBullet.AddForce(pipe.forward * bulletSpeed);
+            Invoke(nameof(FireRate), fireRate);
+        }
+        else animator.SetTrigger("Idle");
     }
 
-    protected virtual IEnumerator FindTarget()
+    protected virtual void FindTarget()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, findDistance, targetLayer);
         
@@ -60,11 +62,6 @@ public class Turrent : Weapon
 
         if (hitColliders.Length == 0)
             target = null;
-
-        yield return new WaitForSeconds(findRate);
-        
-
-        StartCoroutine(FindTarget());
     }
 
     public void ActiveIn(float time)
@@ -76,7 +73,6 @@ public class Turrent : Weapon
     {
         canFire = true;
         isActive = true;
-        StartCoroutine(FindTarget());
     }
 
     protected virtual void OnDrawGizmosSelected()
