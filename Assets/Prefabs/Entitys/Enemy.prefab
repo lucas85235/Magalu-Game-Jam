@@ -91,7 +91,8 @@ MonoBehaviour:
   updateTargetPosition: 0.1
   detectDistance: 8
   damage: 10
-  attackRate: 2
+  attackRate: 1.6
+  damageDelay: 0.8
 --- !u!114 &381802230
 MonoBehaviour:
   m_ObjectHideFlags: 0

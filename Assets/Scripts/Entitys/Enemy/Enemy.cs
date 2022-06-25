@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Status")]
     public float damage = 10f;
     public float attackRate = 1f;
+    public float damageDelay = 0.4f;
 
     public float TargetDistance => Vector3.Distance(transform.position, target.position);
 
@@ -65,7 +66,6 @@ public class Enemy : MonoBehaviour
 
             else if (TargetDistance <= distanceToAttack && canAttack)
             {
-                _nav.enabled = false;
                 canAttack = false;
                 _animations.Attack();
 
@@ -85,6 +85,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator Attack()
     {
+        yield return new WaitForSeconds(damageDelay);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distanceToAttack);
 
         foreach (var hitCollider in hitColliders)
@@ -100,10 +102,9 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(attackRate);
+        yield return new WaitForSeconds(attackRate - damageDelay);
 
         canAttack = true;
-        _nav.enabled = true;
     }
 
     protected virtual void DeathFeedback()
