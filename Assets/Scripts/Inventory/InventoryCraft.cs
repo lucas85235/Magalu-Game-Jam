@@ -20,7 +20,7 @@ public class InventoryCraft : MonoBehaviour
     public int Wood
     {
         get => Inventory[ItemType.Wood];
-        set 
+        set
         {
             Inventory[ItemType.Wood] = value;
             OnUpdateItems?.Invoke();
@@ -30,22 +30,32 @@ public class InventoryCraft : MonoBehaviour
     public int Metal
     {
         get => Inventory[ItemType.Metal];
-        set 
+        set
         {
             Inventory[ItemType.Metal] = value;
             OnUpdateItems?.Invoke();
         }
     }
 
+    public int Weapon
+    {
+        get => Inventory[ItemType.Weapon];
+        set
+        {
+            Inventory[ItemType.Weapon] = value;
+            OnUpdateItems?.Invoke();
+        }
+    }
+
     public UnityEvent OnUpdateItems;
 
-    public static InventoryCraft Instance;
+    public static InventoryCraft i;
 
     void Awake()
     {
-        Instance = this;
+        i = this;
 
-        foreach(ItemType item in Enum.GetValues(typeof(ItemType)))
+        foreach (ItemType item in Enum.GetValues(typeof(ItemType)))
         {
             items.Add(item, 0);
         }
@@ -53,17 +63,17 @@ public class InventoryCraft : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         UpdateSerializeItems();
     }
 
-    #endif
+#endif
 
     private void UpdateSerializeItems()
     {
@@ -72,25 +82,28 @@ public class InventoryCraft : MonoBehaviour
         foreach (var item in items)
         {
             serializeItems.Add(new SerializeItems(item.Key, item.Value));
-        }        
-    }
-
-    [System.Serializable]
-    public struct SerializeItems
-    {
-        public ItemType itemType;
-        public int amount;
-
-        public SerializeItems(ItemType itemType, int amount)
-        {
-            this.itemType = itemType;
-            this.amount = amount;
         }
     }
 
-    public enum ItemType
+
+}
+
+[System.Serializable]
+public struct SerializeItems
+{
+    public ItemType itemType;
+    public int amount;
+
+    public SerializeItems(ItemType itemType, int amount)
     {
-        Wood,
-        Metal,
+        this.itemType = itemType;
+        this.amount = amount;
     }
+}
+
+public enum ItemType
+{
+    Wood,
+    Metal,
+    Weapon,
 }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6118031981841428036}
   - component: {fileID: 6118031981841428038}
   - component: {fileID: 6118031981841428037}
-  - component: {fileID: 6118031981841428043}
   - component: {fileID: 6118031981841428042}
+  - component: {fileID: 8941830415042365130}
   m_Layer: 0
   m_Name: Turrent
   m_TagString: Untagged
@@ -67,24 +67,6 @@ MonoBehaviour:
   canInteract: 1
   interactOption: {fileID: 6177493777174881426, guid: 7bde5fcdba474e0468bca4c18d4ae173, type: 3}
   adjustLocalPosition: {x: 0, y: 3, z: 0}
---- !u!114 &6118031981841428043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118031981841428039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395ee1b8ac8c6624e929bea7960f7387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notConstructedObject: {fileID: 6116828132009130379}
-  constructedObject: {fileID: 6116828131660788165}
-  necessaryWood: 1
-  necessaryMetal: 1
-  woodText: {fileID: 3959748571594923749}
-  metalText: {fileID: 1574217447269330922}
 --- !u!114 &6118031981841428042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +91,27 @@ MonoBehaviour:
   findRate: 0.05
   aimPivot: {fileID: 6118664546594218953}
   animator: {fileID: 6175602734586892761}
+--- !u!114 &8941830415042365130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6118031981841428039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6da2e4d5f18d943bd860328658b508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notConstructedObject: {fileID: 6116828132009130379}
+  constructedObject: {fileID: 6116828131660788165}
+  necessaryItems:
+  - itemType: 0
+    amount: 1
+  - itemType: 1
+    amount: 1
+  woodText: {fileID: 3959748571594923749}
+  metalText: {fileID: 1574217447269330922}
 --- !u!1001 &6118031982005159007
 PrefabInstance:
   m_ObjectHideFlags: 0

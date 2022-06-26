@@ -125,7 +125,9 @@ public class Enemy : MonoBehaviour
 
     protected virtual void DeathFeedback()
     {
-        _nav.isStopped = true;
+        if (_nav.enabled) 
+            _nav.isStopped = true;
+            
         _animations.Death();
         Destroy(this.gameObject, destroyTime);
     }

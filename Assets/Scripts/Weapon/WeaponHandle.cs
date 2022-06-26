@@ -25,4 +25,23 @@ public class WeaponHandle : MonoBehaviour
         wObj.transform.localRotation = Quaternion.Euler(transform.forward + initialWeapon.rotationOffset);
         wObj.name = initialWeapon.weapon.name;
     }
+
+    public void SetWeapon()
+    {
+        for (int i = rightHand.childCount; i > 0; i--)
+        {
+            if (rightHand.GetChild(i).TryGetComponent(out Weapon weapon))
+            {
+                Destroy(weapon.gameObject);
+            }
+        }
+
+        Inventory.Instance.AddItem(initialWeapon);
+        var wObj = Instantiate(initialWeapon.weapon);
+
+        wObj.transform.SetParent(rightHand);
+        wObj.transform.localPosition = initialWeapon.weapon.transform.position + initialWeapon.positionOffset;
+        wObj.transform.localRotation = Quaternion.Euler(transform.forward + initialWeapon.rotationOffset);
+        wObj.name = initialWeapon.weapon.name;
+    }
 }
