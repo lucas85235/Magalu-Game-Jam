@@ -5,11 +5,13 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
     public List<ItemPick> items;
+    private bool canSpaw = true;
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && canSpaw)
         {
+            canSpaw = false;
             var r = Random.Range(0, items.Count);
             var spawItem = Instantiate(items[r].gameObject);
             spawItem.transform.position = other.contacts[0].point + Vector3.up;

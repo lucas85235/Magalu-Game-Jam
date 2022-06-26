@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private int currentXP = 0;
-    private int xpToNextLevel = 20;
+    private int xpToNextLevel = 25;
     private int currentLevel = 1;
 
     protected Life _life;
@@ -21,9 +21,6 @@ public class Player : MonoBehaviour
 
     [Header("Player Setup")]
     public Transform model;
-
-    [Header("Player Inventory")]
-    public GameObject inventory;
 
     public Life life { get => _life; private set => _life = value; }
 
@@ -40,18 +37,18 @@ public class Player : MonoBehaviour
 
         _life.OnDie.AddListener(CharacterDead);
 
-        inventory.SetActive(false);
+        // inventory.SetActive(false);
 
         inputActions = new PlayerCharControls();
 
-        inputActions.Interface.Inventory.performed += _ =>
-        {
-            if (!_life.isDead)
-            {
-                PauseMenu.Instance.SetPause(!inventory.activeSelf);
-                inventory.SetActive(!inventory.activeSelf);
-            }
-        };
+        // inputActions.Interface.Inventory.performed += _ =>
+        // {
+        //     if (!_life.isDead)
+        //     {
+        //         PauseMenu.Instance.SetPause(!inventory.activeSelf);
+        //         inventory.SetActive(!inventory.activeSelf);
+        //     }
+        // };
     }
 
     private void OnEnable()
@@ -90,7 +87,8 @@ public class Player : MonoBehaviour
 
         if(currentXP >= (xpToNextLevel * currentLevel))
         {
-            currentLevel++;
+            currentXP = 0;
+            currentLevel += 1;
             GameManager.Instance.ActivateUpgradePanel();
         }
     }
