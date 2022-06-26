@@ -25,6 +25,10 @@ public class Enemy : MonoBehaviour
     public float attackRate = 1f;
     public float damageDelay = 0.4f;
 
+    [Header("Enemy")]
+    public PlayClips audioIdle;
+    public PlayClips audioAttack;
+
     public float TargetDistance => Vector3.Distance(transform.position, target.position);
 
     protected virtual void Start()
@@ -44,6 +48,7 @@ public class Enemy : MonoBehaviour
         _life.OnDie.AddListener(DeathFeedback);
 
         StartCoroutine(RoutineIA());
+        StartCoroutine(IdleSounds());
     }
 
     private void LateUpdate()
@@ -82,11 +87,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator IdleSounds()
+    {
+        while (true)
+        {
+            if (_life.isDead) yield break;
+
+            if (canAttack) audioIdle.PlayClip();
+            yield return new WaitForSeconds(audioIdle.CurrentClipLegth);
+        }
+    }
 
     protected virtual IEnumerator Attack()
     {
         yield return new WaitForSeconds(damageDelay);
 
+        audioAttack.PlayClip();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distanceToAttack);
 
         foreach (var hitCollider in hitColliders)

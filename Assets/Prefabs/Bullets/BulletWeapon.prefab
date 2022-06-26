@@ -234,4 +234,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 1.2
-  bulletDamage: 15
+  bulletDamage: 5
+  canDamagePlayer: 1
