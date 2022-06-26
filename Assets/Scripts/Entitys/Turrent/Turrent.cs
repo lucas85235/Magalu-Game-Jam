@@ -38,9 +38,12 @@ public class Turrent : Weapon
         if (canFire && isActive && target != null && !target.isDead)
         {
             canFire = false;
+
             animator.SetTrigger("Fire");
-            Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
-            spawBullet.AddForce(pipe.forward * bulletSpeed);
+            Bullet spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
+            spawBullet.SetDamage(info.damage);
+            spawBullet.rb.AddForce(pipe.forward * bulletSpeed);
+
             Invoke(nameof(FireRate), fireRate);
         }
         else animator.SetTrigger("Idle");

@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float destroyTime = 1.2f;
-    public float bulletDamage = 20f;
+    public Rigidbody rb;
 
-    public bool canDamagePlayer = true;
+    [SerializeField] private float destroyTime = 1.2f;
+    [SerializeField] private float bulletDamage = 20f;
+
+    [SerializeField] private bool canDamagePlayer = true;
 
     protected virtual void Start()
     {
         Destroy(this.gameObject, destroyTime);
+    }
+
+    public void SetDamage(int value)
+    {
+        bulletDamage = value;
     }
 
     protected virtual void OnTriggerEnter(Collider other)

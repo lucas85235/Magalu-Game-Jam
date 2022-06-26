@@ -8,9 +8,11 @@ public class GunBench : BuildItem
     [Header("UI")]
     public Text pistolWeapon;
     public Text metalText;
+    public GameObject canvas;
 
-    [Header("UI")]
-    public List<WeaponItem> item;
+    [Header("Weapons")]
+    public List<WeaponItem> weapons;
+    public int currentIndex = 0;
 
     private WeaponHandle handle;
 
@@ -22,7 +24,6 @@ public class GunBench : BuildItem
 
     protected override void OnInteract()
     {
-
         interact.interactOption.SetActive(true);
 
         foreach (var item in necessaryItems)
@@ -30,12 +31,18 @@ public class GunBench : BuildItem
             if (InventoryCraft.i.Inventory[item.itemType] < item.amount) return;
         }
         
-        interact.interactOption.SetActive(false);
 
         InventoryCraft.i.Weapon -= necessaryItems[0].amount;
         InventoryCraft.i.Metal -= necessaryItems[1].amount;
 
-        interact.canInteract = false;
+        interact.interactOption.SetActive(false);
+        handle.SetWeapon(weapons[currentIndex]);
+
+        if (currentIndex + 1 >= weapons.Count)
+        {
+            interact.canInteract = false;
+        }
+        else currentIndex++;
     }
 
     protected override void UpdateHud()

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d270c3616c04440ad78506144ba795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 3366231753354790193, guid: 40a57f570bda84649a53d6c46186b513, type: 3}
   destroyTime: 1.2
   bulletDamage: 5
   canDamagePlayer: 0
