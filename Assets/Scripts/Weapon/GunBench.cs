@@ -30,7 +30,6 @@ public class GunBench : BuildItem
         {
             if (InventoryCraft.i.Inventory[item.itemType] < item.amount) return;
         }
-        
 
         InventoryCraft.i.Weapon -= necessaryItems[0].amount;
         InventoryCraft.i.Metal -= necessaryItems[1].amount;
@@ -38,11 +37,25 @@ public class GunBench : BuildItem
         interact.interactOption.SetActive(false);
         handle.SetWeapon(weapons[currentIndex]);
 
-        if (currentIndex + 1 >= weapons.Count)
+        if (currentIndex + 1 < weapons.Count)
+        {
+            currentIndex++;
+
+            for (int i = 0; i < necessaryItems.Count; i++)
+            {
+                var item = necessaryItems[i];
+                item.amount *= 2;
+
+                necessaryItems[i] = item;
+            }
+
+            UpdateHud();
+        }
+        else 
         {
             interact.canInteract = false;
+            canvas.SetActive(false);
         }
-        else currentIndex++;
     }
 
     protected override void UpdateHud()
