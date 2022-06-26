@@ -5,11 +5,12 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
+    public WeaponItem info;    
     public Transform pipe;
     public float fireRate = 0.25f;
 
     [Header("Projectile Settings")]
-    public Rigidbody bullet;
+    public Bullet bullet;
     public float bulletSpeed = 900f;
 
     protected bool canFire;
@@ -26,10 +27,20 @@ public class Weapon : MonoBehaviour
         if (canFire)
         {
             canFire = false;
-            Rigidbody spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
-            spawBullet.AddForce(pipe.forward * bulletSpeed);
+            Bullet spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
+            spawBullet.SetDamage(info.damage);
+            spawBullet.rb.AddForce(pipe.forward * bulletSpeed);
+            
             Invoke("FireRate", fireRate);
         }
+    }
+
+    public virtual void ItemInfo(WeaponItem value)
+    {
+        info = value;
+
+        // Debug.Log("W value " + value);
+        // Debug.Log("W damage " + damage);
     }
 
     protected virtual void FireRate()

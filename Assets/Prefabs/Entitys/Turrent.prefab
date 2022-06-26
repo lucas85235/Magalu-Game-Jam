@@ -81,8 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipe: {fileID: 6118302434167935023}
   fireRate: 1
-  bullet: {fileID: 3366231753354790193, guid: 4c292c10260c8a642a57045e18c7ab38, type: 3}
+  bullet: {fileID: 4326374163762243356, guid: 4c292c10260c8a642a57045e18c7ab38, type: 3}
   bulletSpeed: 1500
+  info: {fileID: 11400000, guid: ba0227b8298d44646a23cf8d88f669d6, type: 2}
   target: {fileID: 0}
   targetLayer:
     serializedVersion: 2
@@ -103,13 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6da2e4d5f18d943bd860328658b508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notConstructedObject: {fileID: 6116828132009130379}
-  constructedObject: {fileID: 6116828131660788165}
   necessaryItems:
   - itemType: 0
     amount: 1
   - itemType: 1
     amount: 1
+  notConstructedObject: {fileID: 6116828132009130379}
+  constructedObject: {fileID: 6116828131660788165}
   woodText: {fileID: 3959748571594923749}
   metalText: {fileID: 1574217447269330922}
 --- !u!1001 &6118031982005159007

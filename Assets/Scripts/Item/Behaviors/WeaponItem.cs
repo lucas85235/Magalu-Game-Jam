@@ -7,6 +7,7 @@ public class WeaponItem : Item
 {
     [Header("Weapon")]
     public Weapon weapon;
+    public int damage = 5;
 
     [Header("Adjust Spaw")]
     public Vector3 positionOffset = new Vector3(0, 0, 0);
