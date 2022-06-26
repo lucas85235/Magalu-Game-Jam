@@ -57,7 +57,7 @@ public class InventoryCraft : MonoBehaviour
 
         foreach (ItemType item in Enum.GetValues(typeof(ItemType)))
         {
-            items.Add(item, 0);
+            items.Add(item, 10);
         }
     }
 

@@ -27,8 +27,7 @@ public class Enemy : MonoBehaviour
     public float damageDelay = 0.4f;
 
     [Header("Enemy")]
-    public PlayClips audioIdle;
-    public PlayClips audioAttack;
+    public TimeSystem time;
 
     private float idleSoundDelay = 3;
 
@@ -36,6 +35,14 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        time = FindObjectOfType<TimeSystem>();
+        
+        time.OnEndTime.AddListener(() => {
+            target = null;
+            _nav.isStopped = true;
+            _animations.Death();
+        });
+        
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;

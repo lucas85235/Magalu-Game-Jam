@@ -9,7 +9,7 @@ public class HudManager : MonoBehaviour
     public Text weapon;
     
     [Header("Life")]
-    public Text life;
+    public Slider life;
 
     public static HudManager Instance;
 
@@ -25,8 +25,9 @@ public class HudManager : MonoBehaviour
         weapon.text = weaponName + " - " + weaponBullets;
     }
 
-    public virtual void SeLifeHud(float currentLife)
+    public virtual void SeLifeHud(float currentLife, float maxLife)
     {
-        life.text = "LIFE - " + currentLife;
+        life.maxValue = maxLife;
+        life.value = currentLife;
     }
 }

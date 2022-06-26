@@ -20,7 +20,8 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Start() 
     {
-        canFire = true;
+        canFire = false;
+        Invoke("FireRate", fireRate);
     }
 
     protected virtual void FixedUpdate()
@@ -33,6 +34,8 @@ public class Weapon : MonoBehaviour
             Bullet spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
             spawBullet.SetDamage(info.damage + user.bonusDamage);
             spawBullet.rb.AddForce(pipe.forward * bulletSpeed);
+
+            SoundManager.Instance.PlayClip(info.name);
             
             Invoke("FireRate", fireRate);
         }

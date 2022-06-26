@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184cb89485f882443b2253715011225b, type: 3}
   m_Name: Weapon_2
   m_EditorClassIdentifier: 
-  itemName: AN
+  itemName: Weapon_2
   itemDescription: Best Weapon
   itemSprite: {fileID: 21300000, guid: 20dba58da18c25e428c600e0fba190f0, type: 3}
   OnUserItem:

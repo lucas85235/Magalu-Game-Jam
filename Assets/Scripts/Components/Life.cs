@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Life : MonoBehaviour
@@ -74,13 +75,13 @@ public class Life : MonoBehaviour
     {
         if (gameObject.tag == "Player")
         {
-            HudManager.Instance.SeLifeHud(currentLife);
+            HudManager.Instance.SeLifeHud(currentLife, maxLife);
         }
     }
 
     public virtual void UpgradeLife()
     {
         maxLife += 10;
-        currentLife += 10;
+        SetLife(currentLife + 10);
     }
 }
