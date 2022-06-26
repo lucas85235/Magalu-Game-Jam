@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 9041004120379068896}
   - component: {fileID: 2532987752133068202}
   - component: {fileID: 2108001605}
-  - component: {fileID: 3304468167595740088}
   - component: {fileID: 2031041200}
+  - component: {fileID: 3304468167595740088}
   - component: {fileID: 8263915315422927278}
   - component: {fileID: 4885533629794629537}
   m_Layer: 8
@@ -128,20 +128,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
---- !u!114 &3304468167595740088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2532987752133068205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e45165dd3ce0d9438c7500c6e667524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  runSpeed: 4
 --- !u!114 &2031041200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +143,23 @@ MonoBehaviour:
   inputLayer:
     serializedVersion: 2
     m_Bits: 512
+  aim: {x: 0, y: 0}
+--- !u!114 &3304468167595740088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532987752133068205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e45165dd3ce0d9438c7500c6e667524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  runSpeed: 4
+  movement: {x: 0, y: 0}
+  currentSpeed: 0
 --- !u!114 &8263915315422927278
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,6 +37,15 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""ab274a59-2437-4b14-ac5c-bc98270bf7dd"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""98402702-917d-4c4d-800a-6d2c909ada0f"",
@@ -176,6 +185,72 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5af44dc-4270-4899-bbb0-46fa80088ff5"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ARROWS"",
+                    ""id"": ""ea974d9a-3da6-49aa-b0d4-32ed6ae760ed"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""782b70b0-b216-4c08-8923-38e22f86ef47"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c73d5896-55bd-4d8b-a99c-7bf1c472138c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""682db160-258e-4dfd-a9a7-ea1630defa9a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c69193d8-7fd7-4198-86da-4a2b977ccf6d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -255,6 +330,7 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
+        m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
         m_Character_Sprint = m_Character.FindAction("Sprint", throwIfNotFound: true);
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
         // Interface
@@ -321,6 +397,7 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Character;
     private ICharacterActions m_CharacterActionsCallbackInterface;
     private readonly InputAction m_Character_Movement;
+    private readonly InputAction m_Character_Aim;
     private readonly InputAction m_Character_Sprint;
     private readonly InputAction m_Character_Interact;
     public struct CharacterActions
@@ -328,6 +405,7 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
         private @PlayerCharControls m_Wrapper;
         public CharacterActions(@PlayerCharControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Character_Movement;
+        public InputAction @Aim => m_Wrapper.m_Character_Aim;
         public InputAction @Sprint => m_Wrapper.m_Character_Sprint;
         public InputAction @Interact => m_Wrapper.m_Character_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
@@ -342,6 +420,9 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
+                @Aim.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
                 @Sprint.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprint;
@@ -355,6 +436,9 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
@@ -409,6 +493,7 @@ public partial class @PlayerCharControls : IInputActionCollection2, IDisposable
     public interface ICharacterActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }

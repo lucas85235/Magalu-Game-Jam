@@ -5,7 +5,6 @@ using UnityEngine;
 public class SkillMove : Skill
 {
     protected Animator _animator;
-    protected PlayerCharControls inputActions;
 
     [Header("Move")]
     public float speed = 2.5f;
@@ -14,27 +13,17 @@ public class SkillMove : Skill
     private Vector2 movement;
     private float currentSpeed;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         currentSpeed = speed;
-
-        inputActions = new PlayerCharControls();
 
         inputActions.Character.Movement.performed += ctx => movement = ctx.ReadValue<Vector2>();
         inputActions.Character.Movement.canceled += _ => movement = Vector2.zero;
 
         inputActions.Character.Sprint.performed += _ => currentSpeed = runSpeed;
         inputActions.Character.Sprint.performed += _ => currentSpeed = speed;
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
     }
 
     public virtual void Start() 

@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (PauseMenu.Instance.IsPaused) return;
+
         if (!_life.isDead)
         {
             // Use Skills
