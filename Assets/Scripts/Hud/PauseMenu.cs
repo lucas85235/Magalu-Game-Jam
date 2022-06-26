@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         inputActions.Disable();
     }
 
-    private void PauseUnpause()
+    public void PauseUnpause()
     {
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0 : 1;

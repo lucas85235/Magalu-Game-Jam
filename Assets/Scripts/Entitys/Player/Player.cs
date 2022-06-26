@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private int currentXP = 0;
-    private int xpToNextLevel = 5;
+    private int xpToNextLevel = 20;
     private int currentLevel = 1;
 
     protected Life _life;
@@ -88,8 +88,9 @@ public class Player : MonoBehaviour
     {
         currentXP += value;
 
-        if(currentXP >= xpToNextLevel * currentLevel)
+        if(currentXP >= (xpToNextLevel * currentLevel))
         {
+            currentLevel++;
             GameManager.Instance.ActivateUpgradePanel();
         }
     }
