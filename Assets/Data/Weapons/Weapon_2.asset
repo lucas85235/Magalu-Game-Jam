@@ -18,7 +18,7 @@ MonoBehaviour:
   OnUserItem:
     m_PersistentCalls:
       m_Calls: []
-  weapon: {fileID: 9215942354844371391, guid: 92996c64129c0c54b81ea72c3c68db52, type: 3}
+  weapon: {fileID: 9215942354844371391, guid: 3e0f2d5ceb2bc9947b8176f5a3fa3de3, type: 3}
   damage: 10
-  positionOffset: {x: 0.25, y: 0, z: -0.05}
-  rotationOffset: {x: 0, y: 88, z: 0}
+  positionOffset: {x: 0.25, y: 0.045, z: -0.05}
+  rotationOffset: {x: -5, y: 85, z: 0}
