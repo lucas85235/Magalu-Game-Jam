@@ -325,6 +325,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1513653666}
     m_Modifications:
+    - target: {fileID: 1766435500603348963, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766435500603348963, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766435500603348963, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766435500603348963, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1766435500654007586, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -392,6 +408,22 @@ PrefabInstance:
     - target: {fileID: 5564617795072565739, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
       propertyPath: m_Name
       value: GunBench
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465936653281002307, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465936653281002307, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465936653281002307, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465936653281002307, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 086552670562bfe49b72cfc327dde1db, type: 3}
@@ -7829,14 +7861,26 @@ PrefabInstance:
     - target: {fileID: 6737079946916967429, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1846653389}
+    - target: {fileID: 6737079946916967429, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSFXVolume
       objectReference: {fileID: 0}
     - target: {fileID: 7506704131226166841, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1846653389}
+    - target: {fileID: 7506704131226166841, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeGeralVolume
       objectReference: {fileID: 0}
     - target: {fileID: 8145219186634905311, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1846653389}
+    - target: {fileID: 8145219186634905311, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMusicVolume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b02aff0c72777c4585a1ed9256f965d, type: 3}

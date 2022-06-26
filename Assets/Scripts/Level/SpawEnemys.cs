@@ -54,7 +54,8 @@ public class SpawEnemys : MonoBehaviour
             if (spawEnemys.Count >= maxEnemys) continue;
 
             Vector3 pos = RandomPosition();
-            while (Vector3.Distance(player.transform.position, pos) <= spawDistance)
+            
+            while (player != null && Vector3.Distance(player.transform.position, pos) <= spawDistance)
             {
                 pos = RandomPosition();
             }
