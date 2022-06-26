@@ -13,7 +13,7 @@ public class Drop : MonoBehaviour
             var r = Random.Range(0, items.Count);
             var spawItem = Instantiate(items[r].gameObject);
             spawItem.transform.position = other.contacts[0].point + Vector3.up;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
