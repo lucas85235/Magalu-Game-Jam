@@ -20,7 +20,7 @@ public class SpawDrop : MonoBehaviour
             var time = Random.Range(spawTime.x, spawTime.y);
             yield return new WaitForSeconds(time);
 
-            Vector2 pos = RandomPosition();
+            Vector3 pos = RandomPosition();
 
             var d = Instantiate(drop);
             d.transform.position = pos;
@@ -32,6 +32,6 @@ public class SpawDrop : MonoBehaviour
         var px = Random.Range(col.bounds.min.x, col.bounds.max.x);
         var py = Random.Range(col.bounds.min.z, col.bounds.max.z);
 
-        return new Vector3(px, 1, py);
+        return new Vector3(px, 10, py);
     }
 }
