@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     protected ZombieAnimations _animations;
     protected bool canAttack = true;
 
+    public int experienceOnDeath = 5;
+
     [Header("Enemy")]
     public Transform model;
     public float destroyTime = 2f;
@@ -134,6 +136,7 @@ public class Enemy : MonoBehaviour
             _nav.isStopped = true;
             
         _animations.Death();
+        GameManager.Instance.player.ReceiveExperience(experienceOnDeath);
         Destroy(this.gameObject, destroyTime);
     }
 

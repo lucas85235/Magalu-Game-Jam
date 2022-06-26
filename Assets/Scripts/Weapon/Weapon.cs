@@ -15,6 +15,9 @@ public class Weapon : MonoBehaviour
 
     protected bool canFire;
 
+    [HideInInspector]
+    public Player user;
+
     protected virtual void Start() 
     {
         canFire = true;
@@ -28,7 +31,7 @@ public class Weapon : MonoBehaviour
         {
             canFire = false;
             Bullet spawBullet = Instantiate(bullet, pipe.position, pipe.rotation);
-            spawBullet.SetDamage(info.damage);
+            spawBullet.SetDamage(info.damage + user.bonusDamage);
             spawBullet.rb.AddForce(pipe.forward * bulletSpeed);
             
             Invoke("FireRate", fireRate);

@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Life : MonoBehaviour
 {
+    public float defence;
+
     [Header("Life Setup")]
     public float maxLife = 100f;
 
@@ -37,7 +39,7 @@ public class Life : MonoBehaviour
         if (isDead) return;
         
         // Set new life value
-        currentLife -= damage;
+        currentLife -= (Mathf.Max(damage - defence, 0));
         
         LifeRules();
         UpdateHud();
@@ -74,5 +76,11 @@ public class Life : MonoBehaviour
         {
             HudManager.Instance.SeLifeHud(currentLife);
         }
+    }
+
+    public virtual void UpgradeLife()
+    {
+        maxLife += 10;
+        currentLife += 10;
     }
 }
