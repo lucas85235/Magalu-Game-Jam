@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     public PlayClips audioIdle;
     public PlayClips audioAttack;
 
+    private float idleSoundDelay = 3;
+
     public float TargetDistance => Vector3.Distance(transform.position, target.position);
 
     protected virtual void Start()
@@ -93,8 +95,11 @@ public class Enemy : MonoBehaviour
         {
             if (_life.isDead) yield break;
 
-            if (canAttack) audioIdle.PlayClip();
-            yield return new WaitForSeconds(audioIdle.CurrentClipLegth);
+            if (canAttack)
+            {
+                SoundManager.Instance.PlayClip("ZombieGrowl");
+            }
+            yield return new WaitForSeconds(idleSoundDelay);
         }
     }
 
@@ -102,7 +107,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(damageDelay);
 
-        audioAttack.PlayClip();
+        SoundManager.Instance.PlayClip("ZombieAttack");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distanceToAttack);
 
         foreach (var hitCollider in hitColliders)

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject mainManu;
+    public GameObject configurationsMenu;
+    public GameObject inventoryMenu;
     public bool IsPaused;
 
     public static PauseMenu Instance;
@@ -38,6 +40,11 @@ public class PauseMenu : MonoBehaviour
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0 : 1;
         mainManu.SetActive(IsPaused);
+
+        if (!IsPaused)
+        {
+            configurationsMenu.SetActive(false);
+        }
     }
 
     public void LoadLevel(string level)
