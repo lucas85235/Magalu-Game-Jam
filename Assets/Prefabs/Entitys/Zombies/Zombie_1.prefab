@@ -63,7 +63,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655250369857759789}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.4
   m_Height: 2
@@ -108,7 +108,6 @@ MonoBehaviour:
   target: {fileID: 0}
   distanceToAttack: 1.5
   updateTargetPosition: 0.1
-  detectDistance: 8
   damage: 10
   attackRate: 2
   damageDelay: 0.8

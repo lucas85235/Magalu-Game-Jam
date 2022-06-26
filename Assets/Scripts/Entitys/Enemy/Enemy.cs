@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public float distanceToAttack = 2f;
     public float updateTargetPosition = 1f;
-    public float detectDistance = 10f;
 
     [Header("Enemy Status")]
     public float damage = 10f;
@@ -45,7 +44,9 @@ public class Enemy : MonoBehaviour
         _life = GetComponent<Life>();
         _animations = model.GetComponent<ZombieAnimations>();
         _nav = GetComponent<NavMeshAgent>();
+        GetComponent<Collider>().enabled = true;
 
+        _nav.enabled = true;
         _nav.stoppingDistance = distanceToAttack;
         _animations.Walk(1f);
 
@@ -65,10 +66,13 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator RoutineIA()
     {
-        while (!_life.isDead)
+        while (!_life.isDead && target != null)
         {
-            if (TargetDistance > distanceToAttack && TargetDistance < detectDistance && canAttack)
+            if (TargetDistance > distanceToAttack && canAttack)
             {
+                if (!_nav.enabled)
+                    _nav.enabled = true;
+
                 _nav.SetDestination(target.position);
                 _animations.Walk(1f);
             }
@@ -79,12 +83,6 @@ public class Enemy : MonoBehaviour
                 _animations.Attack();
 
                 StartCoroutine(Attack());
-            }
-
-            else if (TargetDistance >= detectDistance)
-            {
-                _animations.Idle();
-                _nav.SetDestination(transform.position);
             }
 
             yield return new WaitForSeconds(updateTargetPosition);
@@ -142,8 +140,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectDistance);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distanceToAttack);
     }
