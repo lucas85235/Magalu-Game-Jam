@@ -5945,8 +5945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopwatchText: {fileID: 9116803368748068012}
-  _initialTime: 10
-  _extraTime: 3
+  _initialTime: 600
+  _extraTime: 2
   OnEndTime:
     m_PersistentCalls:
       m_Calls: []
