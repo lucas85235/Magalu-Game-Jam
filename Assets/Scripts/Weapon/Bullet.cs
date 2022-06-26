@@ -33,12 +33,18 @@ public class Bullet : MonoBehaviour
             {
                 life.TakeDamage(bulletDamage);
             }
+            
+            rb.velocity = Vector3.zero;
+            GetComponent<Collider>().enabled = false;
+        }
+    }
 
-            Destroy(this.gameObject);
-        }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
-            Destroy(this.gameObject);
-        }
+            rb.velocity = Vector3.zero;
+            GetComponent<Collider>().enabled = false;
+        }        
     }
 }
