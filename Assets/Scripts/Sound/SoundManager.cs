@@ -74,6 +74,7 @@ public class SoundManager : MonoBehaviour
 
     public float PlayClip(string clipName)
     {
+        Debug.Log("Play");
         SoundList s = Array.Find(clips, clip => clip.name == clipName);
 
         int randIndex = UnityEngine.Random.Range(0, s.audioSources.Count);
