@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject mainManu;
     public GameObject configurationsMenu;
     public GameObject inventoryMenu;
+    public GameObject upgradeMenu;
     public bool IsPaused;
 
     public static PauseMenu Instance;
@@ -35,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         inputActions.Disable();
     }
 
-    private void PauseUnpause()
+    public void PauseUnpause()
     {
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0 : 1;
@@ -61,6 +62,19 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
         }
         else Time.timeScale = 1;        
+    }
+
+    public void SetUpgradePanel(bool value)
+    {
+        if (value)
+        {
+            inputActions.Disable();
+        }
+        else
+        {
+            inputActions.Enable();
+        }
+        upgradeMenu.SetActive(value);
     }
 
     public void GameQuit()

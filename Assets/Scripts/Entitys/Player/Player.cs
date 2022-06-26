@@ -6,9 +6,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private int currentXP = 0;
+    private int xpToNextLevel = 20;
+    private int currentLevel = 1;
+
     protected Life _life;
     protected Rigidbody _rb;
     protected Skill[] skills;
+
+    protected SkillMove skillMove;
+    
+    [HideInInspector]
+    public int bonusDamage = 0;
 
     [Header("Player Setup")]
     public Transform model;
@@ -26,6 +35,8 @@ public class Player : MonoBehaviour
 
         _life = GetComponent<Life>();
         _rb = GetComponent<Rigidbody>();
+
+        TryGetComponent(out skillMove);
 
         _life.OnDie.AddListener(CharacterDead);
 
@@ -71,5 +82,37 @@ public class Player : MonoBehaviour
     {
         _rb.useGravity = false;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void ReceiveExperience(int value)
+    {
+        currentXP += value;
+
+        if(currentXP >= (xpToNextLevel * currentLevel))
+        {
+            currentLevel++;
+            GameManager.Instance.ActivateUpgradePanel();
+        }
+    }
+
+    public void UpgradeVelocity()
+    {
+        skillMove.speed *= 1.1f;
+        skillMove.runSpeed *= 1.1f;
+    }
+
+    public void UpgradeLife()
+    {
+        _life.UpgradeLife();
+    }
+
+    public void UpgradeDamage()
+    {
+        bonusDamage++;
+    }
+
+    public void UpgradeDefence()
+    {
+        _life.defence++;
     }
 }

@@ -28,6 +28,7 @@ public class WeaponHandle : MonoBehaviour
         Inventory.Instance.AddItem(item);
         var wObj = Instantiate(item.weapon);
 
+        wObj.user = GetComponent<Player>();
         wObj.transform.SetParent(rightHand);
         wObj.transform.localPosition = item.weapon.transform.position + item.positionOffset;
         wObj.transform.localRotation = Quaternion.Euler(transform.forward + item.rotationOffset);
