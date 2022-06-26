@@ -1993,8 +1993,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d1502ef0967f9ce458fe43a0bdfc34b0, type: 3}
     - {fileID: 8300000, guid: 9911ffb378443094a98733dc89cbcd12, type: 3}
     - {fileID: 8300000, guid: 96dda31d405262e4296d39e141451ded, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.2
+    pitch: 0.9
     isMusic: 0
     audioSources: []
   - name: ZombieAttack
@@ -2002,9 +2002,17 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 01b35e25d5ed5ea4eadcb0fff41d680b, type: 3}
     - {fileID: 8300000, guid: be7b5c5410834914d98029e402c22b01, type: 3}
     - {fileID: 8300000, guid: 617a82a174d61bd45852acfbef33b9d9, type: 3}
+    volume: 0.5
+    pitch: 0.9
+    isMusic: 0
+    audioSources: []
+  - name: Music
+    clips:
+    - {fileID: 8300000, guid: 0d7e2f52abaf9914bba23f7a8f00644e, type: 3}
+    - {fileID: 8300000, guid: e322f4e5b6c985a409b12942fd0580c8, type: 3}
     volume: 1
     pitch: 1
-    isMusic: 0
+    isMusic: 1
     audioSources: []
 --- !u!4 &1889241481
 Transform:
