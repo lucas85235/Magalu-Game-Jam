@@ -15,5 +15,6 @@ public class Drop : MonoBehaviour
             spawItem.transform.position = other.contacts[0].point + Vector3.up;
             Destroy(gameObject);
         }
+        else Destroy(gameObject);
     }
 }
