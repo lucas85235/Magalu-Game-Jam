@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184cb89485f882443b2253715011225b, type: 3}
   m_Name: Weapon_4
   m_EditorClassIdentifier: 
-  itemName: AN
+  itemName: Weapon_4
   itemDescription: Best Weapon
   itemSprite: {fileID: 21300000, guid: 20dba58da18c25e428c600e0fba190f0, type: 3}
   OnUserItem:
     m_PersistentCalls:
       m_Calls: []
-  weapon: {fileID: 9215942354844371391, guid: 92996c64129c0c54b81ea72c3c68db52, type: 3}
-  damage: 10
-  positionOffset: {x: 0.25, y: 0, z: -0.05}
-  rotationOffset: {x: 0, y: 88, z: 0}
+  weapon: {fileID: 9215942354844371391, guid: 59a41fa59c88c444191b3f5cd30238ed, type: 3}
+  damage: 20
+  positionOffset: {x: 0.25, y: 0.045, z: -0.05}
+  rotationOffset: {x: -5, y: 85, z: 0}
